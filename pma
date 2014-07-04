@@ -3,15 +3,7 @@ server {
     root /usr/share/phpmyadmin;
     index index.php;
     
-    location ~ \.php$ {
-        fastcgi_split_path_info ^(.+\.php)(/.+)$;
-        include fastcgi_params;
-    }
-    
-    # Connect only through localhost
-    location / {
-        satisfy any;
-        allow 127.0.0.1;
-        deny all;
-    }
+    include sites-available/includes/php-config;
+
+    include sites-available/includes/localhost-only;
 }
