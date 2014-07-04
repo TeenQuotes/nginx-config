@@ -1,0 +1,17 @@
+server {
+    server_name memcached.teen-quotes.com;
+    root /var/www/memcached;
+    index index.php;
+    
+    location ~ \.php$ {
+        fastcgi_split_path_info ^(.+\.php)(/.+)$;
+        include fastcgi_params;
+    }
+    
+    # Connect only through localhost
+    location / {
+        satisfy any;
+        allow 127.0.0.1;
+        deny all;
+    }
+}

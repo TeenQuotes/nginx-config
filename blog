@@ -1,0 +1,17 @@
+server {
+    server_name blog.teen-quotes.com;
+    root /var/www/blog;
+        
+    index index.php;
+    try_files $uri $uri/ /index.php;
+        
+    location ~ \.php$ {
+        fastcgi_split_path_info ^(.+\.php)(/.+)$;
+        include fastcgi_params;
+    }
+
+    location / {
+        auth_basic "Get away";
+        auth_basic_user_file /var/www/htpasswd;
+    }
+}

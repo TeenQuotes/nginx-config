@@ -1,0 +1,63 @@
+server {
+    server_name stories.dev.teen-quotes.com;
+    listen 80;
+    
+    root /var/www/website/public;
+    index index.php index.html;
+    # Browse folders if no index file
+    autoindex on;
+    
+    # Don't cache avatars
+    location ^~ /var/www/website/public/uploads/avatar/ {
+        root /var/www/website/public/uploads/avatar;
+        expires epoch;
+    }
+    
+    # Serve static files directly
+    location ~* \.(jpg|jpeg|gif|css|png|js|ico|html)$ {
+        access_log off;
+        expires max;
+    }
+    
+    # Removes trailing slashes (prevents SEO duplicate content issues)
+    if (!-d $request_filename)
+    {
+        rewrite ^/(.+)/$ /$1 permanent;
+    }
+    
+    # Enforce NO www
+    if ($host ~* ^www\.(.*))
+    {
+        set $host_without_www $1;
+        rewrite ^/(.*)$ $scheme://$host_without_www/$1 permanent;
+    }
+ 
+    # Canonicalize codeigniter url end points if your default controller is something other than "welcome" you should change the following
+    if ($request_uri ~* ^(/lobby(/index)?|/index(.php)?)/?$)
+    {
+        rewrite ^(.*)$ / permanent;
+    }
+ 
+    # Removes trailing "index" from all controllers
+    if ($request_uri ~* index/?$)
+    {
+        rewrite ^/(.*)/index/?$ /$1 permanent;
+    }
+    
+    # Unless the request is for a valid file (image, js, css, etc.), send to bootstrap
+    if (!-e $request_filename)
+    {
+        rewrite ^/(.*)$ /index.php?/$1 last;
+        break;
+    }
+ 
+    # Catch all
+    error_page 404 /index.php;
+    location ~ \.php$ {
+        fastcgi_split_path_info ^(.+\.php)(/.+)$;
+        include fastcgi_params;
+    }
+    
+    access_log /var/www/website/app/storage/logs/stories.access.log;
+    error_log /var/www/website/app/storage/logs/stories.error.log;
+}
