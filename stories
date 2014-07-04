@@ -1,5 +1,5 @@
 server {
-    server_name stories.dev.teen-quotes.com;
+    server_name stories.teen-quotes.com;
     listen 80;
     
     # Don't cache avatars

@@ -1,5 +1,5 @@
 server {
-    server_name admin.dev.teen-quotes.com;
+    server_name admin.teen-quotes.com;
     listen 80;
 
     include sites-available/includes/laravel;

@@ -1,5 +1,5 @@
 server {
-    server_name dev.teen-quotes.com;
+    server_name teen-quotes.com;
     listen 80;
 
     # Redirect the old API
