@@ -1,4 +1,4 @@
 location ~ \.php$ {
-	fastcgi_split_path_info ^(.+\.php)(/.+)$;
+    fastcgi_split_path_info ^(.+\.php)(/.+)$;
     include fastcgi_params;
 }
