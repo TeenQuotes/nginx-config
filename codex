@@ -1,0 +1,11 @@
+server {
+    server_name developers.teen-quotes.com;
+    listen 80;
+    
+    include sites-available/includes/laravel-codex;
+
+    include sites-available/includes/php-config;
+    
+    access_log /var/www/codex/app/storage/logs/website.access.log;
+    error_log /var/www/codex/app/storage/logs/website.error.log;
+}
