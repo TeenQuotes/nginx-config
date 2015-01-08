@@ -6,10 +6,4 @@ server {
     try_files $uri $uri/ /index.php;
             
     include sites-available/includes/php-config;
-
-
-    location / {
-        auth_basic "Get away";
-        auth_basic_user_file /var/www/htpasswd;
-    }
 }
