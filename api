@@ -1,16 +1,18 @@
 server {
     server_name api.teen-quotes.com;
     listen 80;
+    listen [::]:80;
     return 301 https://api.teen-quotes.com$request_uri;
 }
 
 server {
     server_name api.teen-quotes.com;
     listen 443 ssl;
+    listen [::]:443 ssl;
     
     ssl on;
     ssl_certificate /etc/nginx/ssl/api.teen-quotes.com.crt;
-    ssl_certificate_key /etc/nginx/ssl/teen-quotes.key;
+    ssl_certificate_key /etc/nginx/ssl/api.teen-quotes.com.key;
 
     include sites-available/includes/laravel;
 
