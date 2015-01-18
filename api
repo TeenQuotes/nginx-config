@@ -8,7 +8,6 @@ server {
 server {
     server_name api.teen-quotes.com;
     listen 443 ssl;
-    listen [::]:443 ssl;
     
     ssl on;
     ssl_certificate /etc/nginx/ssl/api.teen-quotes.com.crt;
