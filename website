@@ -2,9 +2,6 @@ server {
     server_name teen-quotes.com;
     listen 80;
 
-    # Redirect the old API
-    rewrite ^(/app/)(.*)$ http://oldapi.teen-quotes.com/$2 permanent;
-    
     # Don't cache avatars
     location ^~ /var/www/website/public/uploads/avatar/ {
         root /var/www/website/public/uploads/avatar;
