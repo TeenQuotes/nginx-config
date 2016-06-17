@@ -1,8 +1,8 @@
 server {
-    server_name teen-quotes.com;
+    server_name teen-quotes.com www.teen-quotes.com;
     listen 80;
     listen 443 ssl;
-    
+
     # HTTPs to HTTP
     if ($scheme = https) {
        return 301 http://$server_name$request_uri;
