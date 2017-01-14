@@ -1,5 +1,5 @@
 location ~ \.php$ {
-    fastcgi_split_path_info ^(.+\.php)(/.+)$;
-    include fastcgi_params;
-    fastcgi_param REMOTE_ADDR $http_x_forwarded_for;
+  fastcgi_split_path_info ^(.+\.php)(/.+)$;
+  include fastcgi_params;
+  fastcgi_param REMOTE_ADDR $http_x_forwarded_for;
 }

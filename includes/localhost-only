@@ -1,5 +1,0 @@
-location / {
-    satisfy any;
-    allow 127.0.0.1;
-    deny all;
-}
