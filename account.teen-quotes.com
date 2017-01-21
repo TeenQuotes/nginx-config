@@ -6,9 +6,5 @@ server {
   ssl_certificate /etc/nginx/ssl/account.teen-quotes.com.crt;
   ssl_certificate_key /etc/nginx/ssl/account.teen-quotes.com.key;
 
-  include sites-available/includes/laravel;
-  include sites-available/includes/php-config;
-
-  access_log /var/www/website/app/storage/logs/account.access.log;
-  error_log /var/www/website/app/storage/logs/account.error.log;
+  return 301 https://teen-quotes.com$request_uri;
 }
